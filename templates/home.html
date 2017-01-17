@@ -10,8 +10,10 @@
 <body>
 <div align="center">
   <h1>Enter URL:</h1>
-  <form action="" method="post" onsubmit="get_screenshot(); return false">{% csrf_token %}
+  <form action="" method="post" onsubmit="get_screenshot(); return false">
+  {% csrf_token %}
   <input type="url" id="url" size="40" placeholder="Ex. http://www.netflix.com" required>
+
   <input type="submit" value="Generate screenshot">
   </form>
   
