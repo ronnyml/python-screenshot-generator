@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Screenshot Generator</title>
+</head>
+<body>
+<div align="center">
+  <h1>Enter URL:</h1>
+  <form action="" method="post" onsubmit="get_screenshot(); return false">{% csrf_token %}
+  <input type="url" id="url" size="40" placeholder="Ex. http://www.netflix.com" required>
+  <input type="submit" value="Generate screenshot">
+  </form>
+  
+  <h2>Screenshot</h2>
+  <img src="" id="screenshot">
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+  function get_screenshot() {
+      var url = document.getElementById('url').value;
+      var image = document.getElementById('screenshot');
+      image.src = '/get_screenshot/?url=' + url;
+  }
+</script>
