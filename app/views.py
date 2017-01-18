@@ -5,6 +5,7 @@ from datetime import datetime
 from selenium import webdriver
 
 import os
+import base64
 
 DRIVER = "chromedriver"
 
@@ -38,10 +39,13 @@ def get_screenshot(request):
                 driver.save_screenshot(full_img_path)
                 driver.quit()
                 screenshot = open(full_img_path, "rb").read()
-                return HttpResponse(screenshot, content_type="image/png")
+                return render(request, 'home.html', 
+                              {'screenshot':img_name, 'save':True})        
             else:
                 screenshot = driver.get_screenshot_as_png()
                 driver.quit()
-                return  HttpResponse(screenshot)
+                image_64_encode = base64.encodestring(screenshot)
+                return render(request, 'home.html', 
+                	          {'screenshot':image_64_encode})
     else:
         return HttpResponse("Error")
