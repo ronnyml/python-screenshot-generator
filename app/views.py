@@ -10,9 +10,6 @@ import urllib.parse as urlparse
 
 DRIVER = "chromedriver"
 
-def home(request):
-    return render(request, 'home.html', {})
-
 def get_screenshot(request):
     width = 1024
     height = 768

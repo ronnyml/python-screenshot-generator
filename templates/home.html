@@ -14,7 +14,7 @@
   <h1>Enter URL:</h1>
   <form action="/get_screenshot/" method="post">
   {% csrf_token %}
-  <input type="url" name="url" size="40" placeholder="Ex. http://www.netflix.com" required>
+  <input type="url" name="url" size="40" placeholder="Ex. https://www.netflix.com" required>
 
   <input type="submit" value="Generate screenshot">
   </form>
