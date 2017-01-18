@@ -1,9 +1,5 @@
-from django.core.files.base import ContentFile
 from django import template
-from app.models import *
 import base64
-
-from django.core.files.base import ContentFile
 
 register = template.Library()
 
