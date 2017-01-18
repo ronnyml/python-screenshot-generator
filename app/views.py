@@ -32,8 +32,11 @@ def get_screenshot(request):
 
             if save == 'true':
                 now = str(datetime.today().timestamp())
+                img_dir = settings.MEDIA_ROOT
                 img_name = "".join([now, '_image.png'])
-                full_img_path = os.path.join(settings.MEDIA_ROOT, img_name)
+                full_img_path = os.path.join(img_dir, img_name)
+                if not os.path.exists(img_dir):
+                    os.makedirs(img_dir)
                 driver.save_screenshot(full_img_path)
                 screenshot = open(full_img_path, "rb").read()
                 var_dict = {'screenshot':img_name, 'save':True}       
