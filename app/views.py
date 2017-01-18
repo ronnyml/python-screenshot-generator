@@ -35,15 +35,14 @@ def get_screenshot(request):
                 img_name = "".join([now, '_image.png'])
                 full_img_path = os.path.join(settings.MEDIA_ROOT, img_name)
                 driver.save_screenshot(full_img_path)
-                driver.quit()
                 screenshot = open(full_img_path, "rb").read()
-                return render(request, 'home.html', 
-                              {'screenshot':img_name, 'save':True})        
+                var_dict = {'screenshot':img_name, 'save':True}       
             else:
                 screenshot = driver.get_screenshot_as_png()
-                driver.quit()
                 image_64_encode = base64.encodestring(screenshot)
-                return render(request, 'home.html', 
-                	          {'screenshot':image_64_encode})
+                var_dict = {'screenshot':image_64_encode}
+
+            driver.quit()    
+            return render(request, 'home.html', var_dict)
     else:
         return HttpResponse("Error")
