@@ -13,7 +13,6 @@ DRIVER = "chromedriver"
 def get_screenshot(request):
     width = 1024
     height = 768
-    save = 'false'
 
     if request.method == 'POST' and 'url' in request.POST:
         url = request.POST.get("url", "")
@@ -22,12 +21,11 @@ def get_screenshot(request):
             if len(params) > 0:
                 if 'w' in params: width = int(params['w'][0])
                 if 'h' in params: height = int(params['h'][0])
-                if 'save' in params: save = params['save'][0]
             driver = webdriver.Chrome(DRIVER)
             driver.get(url)
             driver.set_window_size(width, height)
 
-            if save == 'true':
+            if 'save' in params and params['save'][0] == 'true':
                 now = str(datetime.today().timestamp())
                 img_dir = settings.MEDIA_ROOT
                 img_name = "".join([now, '_image.png'])
