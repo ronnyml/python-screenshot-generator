@@ -4,8 +4,9 @@ from django.conf import settings
 from datetime import datetime
 from selenium import webdriver
 
-import os
 import base64
+import os
+import urllib.parse as urlparse
 
 DRIVER = "chromedriver"
 
@@ -15,24 +16,21 @@ def home(request):
 def get_screenshot(request):
     width = 1024
     height = 768
-    save_screenshot = False
+    save = 'false'
 
-    if request.method == 'GET' and 'url' in request.GET:
-        url = request.GET['url']
+    if request.method == 'POST' and 'url' in request.POST:
+        url = request.POST.get("url", "")
         if url is not None and url != '':
+            params = urlparse.parse_qs(urlparse.urlparse(url).query)
+            if len(params) > 0:
+                if 'w' in params: width = int(params['w'][0])
+                if 'h' in params: height = int(params['h'][0])
+                if 'save' in params: save = params['save'][0]
             driver = webdriver.Chrome(DRIVER)
             driver.get(url)
-            if 'w' in request.GET:
-                width = request.GET['w']
-            if 'h' in request.GET:
-                height = request.GET['h']
             driver.set_window_size(width, height)
-            
-            if 'save' in request.GET:
-            	if request.GET['save'] == 'true':
-                    save_screenshot = True
 
-            if save_screenshot:
+            if save == 'true':
                 now = str(datetime.today().timestamp())
                 img_name = "".join([now, '_image.png'])
                 full_img_path = os.path.join(settings.MEDIA_ROOT, img_name)
