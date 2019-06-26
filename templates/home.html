@@ -1,4 +1,5 @@
 {% load app_extras %}
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,24 +7,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Screenshot Generator</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}" />
+    <title>Python Screenshot Generator</title>
 </head>
 <body>
-<div align="center">
-  <h1>Enter URL:</h1>
+<div>
+  <h1>Python Screenshot Generator</h1>
+  <label>Enter URL</label>
   <form action="/get_screenshot/" method="post">
-  {% csrf_token %}
-  <input type="url" name="url" size="50" placeholder="Ex. https://www.netflix.com" required>
-
-  <input type="submit" value="Generate screenshot">
+    {% csrf_token %}
+    <input type="url" name="url" size="50" placeholder="Ex. https://www.netflix.com" required>
+    <button type="submit">Generate screenshot</button>
   </form>
   
   {% if screenshot %}
   <h2>Screenshot</h2>
     {% if save %}
-    <img src="{{ MEDIA_URL }}{{ screenshot }}">
+      <img src="{{ MEDIA_URL }}{{ screenshot }}">
     {% else %}
-    <img src="{{ screenshot|decode_image }}">   
+      <img src="{{ screenshot|decode_image }}">
     {% endif %}
   {% endif %}
 </div>
