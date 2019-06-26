@@ -3,7 +3,11 @@ body {
     color: #333333;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0 auto;
-    padding: 12px;
+    padding: 6px;
+}
+
+a {
+    color: #246099;
 }
 
 div {
@@ -12,7 +16,7 @@ div {
 
 h1 {
     font-size: 48px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 input, button {
@@ -31,4 +35,8 @@ button {
     background-color: #246099;
     padding: 12px;
     font-size: 16px;
+}
+
+small {
+    font-size: small;
 }

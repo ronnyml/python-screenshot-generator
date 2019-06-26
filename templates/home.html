@@ -13,15 +13,15 @@
 <body>
 <div>
   <h1>Python Screenshot Generator</h1>
-  <label>Enter URL</label>
-  <form action="/get_screenshot/" method="post">
+  <form action="/" method="post">
     {% csrf_token %}
-    <input type="url" name="url" size="50" placeholder="Ex. https://www.netflix.com" required>
+    <input type="url" name="url" size="50" value="{{ full_url }}" placeholder="Enter URL: https://www.netflix.com" required>
     <button type="submit">Generate screenshot</button>
   </form>
+  <small>Optional params <strong>w, h</strong> for screenshot size and <strong>save</strong> for saving the screenshot in your media dir. <br /> Ex: https://nodejs.org/?w=800&h=600&save=true</small>
   
   {% if screenshot %}
-  <h2>Screenshot</h2>
+  <h2>Screenshot for <a href="{{ base_url }}" target="_blank">{{ domain }}</a></h2>
     {% if save %}
       <img src="{{ MEDIA_URL }}{{ screenshot }}">
     {% else %}
