@@ -1,7 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-from django.urls import include, path
-from django.views.generic import TemplateView
+from django.urls import path
 from app import views
 
 urlpatterns = [
