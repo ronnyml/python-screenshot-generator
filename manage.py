@@ -4,6 +4,9 @@ import os
 import sys
 
 
+"""screen short website"""
+
+
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'screenshot_generator.settings')
     try:
