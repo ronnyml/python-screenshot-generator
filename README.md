@@ -1,3 +1,4 @@
+logr- An Amazing Project
 Python Screenshot Generator for Websites
 --------
 
