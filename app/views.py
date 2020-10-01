@@ -13,7 +13,8 @@ DRIVER = 'chromedriver'
 
 def get_screenshot(request):
     """
-    Take a screenshot and return a png file based on the url.
+    Argument: Take a screenshot. 
+    Return: A png file based on the url.
     """
     width = 1024
     height = 768
