@@ -1,6 +1,6 @@
-Python Screenshot Generator
+Screenshot genearation using Python
 --------
 
-App to generate a screenshot from websites built with Python/Django and Selenium.
+By using this application generate a screenshot from websites built with Python/Django and Selenium.
 
 ![Python Screenshot Generator](/static/img/python_screenshot_generator.png)
