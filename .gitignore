@@ -17,7 +17,7 @@ media/
 __pycache__/
 env/
 
-# Linux
+# unix
 *~
 
 # KDE
