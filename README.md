@@ -1,4 +1,4 @@
-*Python Screenshot Generator*
+Python Screenshot Generator
 
 **Taking screenshot easily**
 --------
