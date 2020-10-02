@@ -1,4 +1,4 @@
-Python Screenshot Generator
+Python Screenshot Generator - Get Instant Screenshot
 --------
 
 App to generate a screenshot from websites built with Python/Django and Selenium.
